@@ -4,7 +4,14 @@
         tag: 'Chị',
         charImg: './assets/lan-linh.png',
         theme: 'lan-linh',
-        typingMsg: "Vậy là hôm nay đã là sinh nhật cậu rồi!! 🎂\n\nBất ngờ chưa Linh, tớ với mọi người phải giấu mãi mới ém được cái quà này khỏi mắt hai cậu đấy. Tuổi mới, chúng tớ có món quà nho nhỏ này tặng đến cậu đó! Tuy nhỏ nhưng mà siêu có võ à nha. Xem thử xem lẹ đi nhaaaaa!!!\nSinh thần vui vẻeeee~~ ✨",
+        typingMsg: "Vậy là hôm nay đã là sinh nhật cậu rồi!! 🎂\n\nBất ngờ chưa Linh, tớ với mọi người phải giấu mãi mới ém được cái quà này khỏi mắt hai cậu đấy. Tuổi mới, chúng tớ có món quà nho nhỏ này tặng đến cậu đó! Tuy nhỏ nhưng mà siêu có võ à nha.\n Xem thử xem lẹ đi nhaaaaa!!!\nSinh thần vui vẻeeee~~ ✨",
+        candleWishes: [
+          'Ngày càng vui vẻ',
+          'Xinh đẹp bội phần',
+          'Mạnh khỏe thêm nha',
+          'Năm tới dịu dàng',
+          'Tỷ sự như mơ'
+        ],
         gifts: [
           { icon: '🌸', ribbon: '🎀', title: '[Tiêu đề quà 1]', body: '[Lời chúc 1]', img: './assets/gift-ll-1.jpg' },
           { icon: '✨', ribbon: '🌟', title: '[Tiêu đề quà 2]', body: '[Lời chúc 2]', img: './assets/gift-ll-2.jpg' },
@@ -22,7 +29,7 @@
           { name: '[Fan 3]', emoji: '🎀', color: '#522917', msg: '[Lời chúc fan 3]', time: '20 phút trước' }
         ],
         letter: {
-          date: '21/03/2026 ✦',
+          date: '21/03/2026',
           greeting: 'Lan Linh ơi,',
           body: `Nói sao nhỉ, thú thật thì, đây là lần đầu tiên tớ một (thực ra là hai) bức thư sinh nhật cho một người nào đó. Và cũng là lần đầu tiên tớ nghĩ nát óc xem là mình nên làm gì để tặng một món quà cho một con người khác. Nếu có bất kỳ thứ gì sai sót hay có thứ gì làm cậu không ưng ý, thì tớ thực lòng xin lỗi nhé.
 
@@ -57,7 +64,14 @@ Thế nhé, sống thật tốt vào!`,
         tag: 'Em',
         charImg: './assets/linh-lan.png',
         theme: 'linh-lan',
-        typingMsg: "Vậy là hôm nay là sinh nhật cậu rồi nè!!! 🎂🎉 \nBất ngờ chưa Lan ơi, tụi tớ với mọi người phải bí mật hết cỡ mới giấu nổi món quà này khỏi mắt hai cậu đấy! Suốt mấy ngày nay ai cũng nín thở, sợ cậu phát hiện là hỏng bét hết á. Tuổi mới chúng tớ chuẩn bị một món quà xinh này á ! Mở ra xem thử đi!!!\nSinh nhật vui vẻ hết nấc nhaaaa~ ✨",
+        typingMsg: "Vậy là hôm nay là sinh nhật cậu rồi nè!!! 🎂🎉 \nBất ngờ chưa Lan ơi, tụi tớ với mọi người phải bí mật hết cỡ mới giấu nổi món quà này khỏi mắt hai cậu đấy! Suốt mấy ngày nay ai cũng nín thở, sợ cậu phát hiện là hỏng bét hết á. Tuổi mới chúng tớ chuẩn bị một món quà nhỏ xinh nè! Mở ra xem thử đi!!!\nSinh nhật vui vẻ hết nấc nhaaaa~ ✨",
+        candleWishes: [
+          'Chúc cậu mạnh khỏe',
+          'Ngày càng xinh đẹp',
+          'Hát hay hơn nữa',
+          'Một năm ngọt ngào',
+          'Vạn sự như ý'
+        ],
         gifts: [
           { icon: '💜', ribbon: '🌙', title: '[Tiêu đề quà 1]', body: '[Lời chúc 1]', img: './assets/gift-ln-1.jpg' },
           { icon: '⭐', ribbon: '✨', title: '[Tiêu đề quà 2]', body: '[Lời chúc 2]', img: './assets/gift-ln-2.jpg' },
@@ -75,7 +89,7 @@ Thế nhé, sống thật tốt vào!`,
           { name: '[Fan 3]', emoji: '🦋', color: '#271142', msg: '[Lời chúc fan 3]', time: '20 phút trước' }
         ],
         letter: {
-          date: '21/03/2026 ✦',
+          date: '21/03/2026',
           greeting: 'Linh Lan ơi,',
           body: `Nói sao nhỉ, thú thật thì, đây là lần đầu tiên tớ viết một (thực ra là hai) bức thư sinh nhật cho một người nào đó. Và cũng là lần đầu tiên tớ nghĩ nát óc xem là mình nên làm gì để tặng một món quà cho một con người khác. Nếu có bất kỳ thứ gì sai sót hay có thứ gì làm cậu không ưng ý, thì tớ thực lòng xin lỗi nhé.
 
@@ -124,14 +138,15 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     let fanartZoomed = false;
     let giftChoiceNoHits = 0;
 
-    const SECTION_ORDER = ['typing', 'candles', 'gifts', 'fanart', 'messages', 'letter'];
+    const SECTION_ORDER = ['typing', 'candles', 'gifts', 'fanart', 'messages', 'letter', 'gift-choice'];
     const sectionState = {
       typing: { unlocked: true, completed: false },
       candles: { unlocked: false, completed: false },
       gifts: { unlocked: false, completed: false },
       fanart: { unlocked: false, completed: false },
       messages: { unlocked: false, completed: false },
-      letter: { unlocked: false, completed: false }
+      letter: { unlocked: false, completed: false },
+      'gift-choice': { unlocked: false, completed: false }
     };
 
     const bgm = document.getElementById('bgm');
@@ -246,7 +261,8 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       highlightActiveNav();
     }
 
-    function unlockSection(name) {
+    function unlockSection(name, options = {}) {
+      const { autoScroll = true } = options;
       const state = sectionState[name];
       if (!state || state.unlocked) return;
       state.unlocked = true;
@@ -258,15 +274,18 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       el.classList.remove('section-hidden');
       void el.offsetHeight;
       el.classList.add('section-reveal', 'section-visible');
-      setTimeout(() => {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
+      if (autoScroll) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
 
       updateNav(name);
       startSection(name);
     }
 
-    function completeSection(name) {
+    function completeSection(name, options = {}) {
+      const { autoScrollNext = true } = options;
       const state = sectionState[name];
       if (!state || state.completed) return;
       state.completed = true;
@@ -287,7 +306,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       const idx = SECTION_ORDER.indexOf(name);
       const nextName = SECTION_ORDER[idx + 1];
       if (nextName) {
-        unlockSection(nextName);
+        unlockSection(nextName, { autoScroll: autoScrollNext });
       }
       highlightActiveNav();
     }
@@ -313,7 +332,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       hideContinueButton('gifts-continue-btn');
       hideContinueButton('fanart-continue-btn');
       hideContinueButton('messages-continue-btn');
-      hideContinueButton('finale-btn');
+      resetGiftChoiceSection();
       updateNav();
     }
 
@@ -353,6 +372,9 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       }
       if (name === 'fanart') {
         revealContinueButton('fanart-continue-btn');
+      }
+      if (name === 'gift-choice') {
+        resetGiftChoiceSection();
       }
     }
 
@@ -474,9 +496,12 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       }
 
       const data = DATA[id];
+      const isLan = id === 'lan-linh';
       const gradient = id === 'lan-linh' ? 'var(--ll-bg)' : 'var(--ln-bg)';
       scrollPage.style.background = gradient;
       scrollPage.classList.add('mix');
+      scrollPage.classList.toggle('theme-lan', isLan);
+      scrollPage.classList.toggle('theme-linh', !isLan);
       populateSections(data);
       resetSections();
 
@@ -532,6 +557,12 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       const wax = document.getElementById('wax-seal');
       wax.style.background = isLan ? '#8F2A2A' : '#6a2b88';
       wax.textContent = isLan ? '🌸' : '💜';
+
+      const giftChoiceSection = document.getElementById('s-gift-choice');
+      if (giftChoiceSection) {
+        giftChoiceSection.classList.toggle('theme-lan', isLan);
+        giftChoiceSection.classList.toggle('theme-linh', !isLan);
+      }
     }
 
     function typeMessage(text, target, onDone) {
@@ -677,31 +708,20 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       if (e.target === giftModal) giftModal.classList.remove('show');
     });
 
-    const giftChoiceModal = document.getElementById('gift-choice-modal');
     const giftChoiceActions = document.getElementById('gift-choice-actions');
     const giftChoiceHint = document.getElementById('gift-choice-hint');
     const giftChoiceYesBtn = document.getElementById('gift-choice-yes');
     const giftChoiceNoBtn = document.getElementById('gift-choice-no');
+    let lastNoMoveAt = 0;
 
-    function resetGiftChoiceModal() {
+    function resetGiftChoiceSection() {
       giftChoiceNoHits = 0;
       giftChoiceHint.textContent = 'Chọn thật lòng nha.';
       giftChoiceNoBtn.hidden = false;
+      giftChoiceNoBtn.style.display = '';
       giftChoiceNoBtn.classList.remove('is-escaping');
       giftChoiceNoBtn.style.removeProperty('--escape-x');
       giftChoiceNoBtn.style.removeProperty('--escape-y');
-      giftChoiceNoBtn.style.removeProperty('--escape-scale');
-    }
-
-    function openGiftChoiceModal() {
-      resetGiftChoiceModal();
-      giftChoiceModal.classList.add('show');
-      giftChoiceModal.setAttribute('aria-hidden', 'false');
-    }
-
-    function closeGiftChoiceModal() {
-      giftChoiceModal.classList.remove('show');
-      giftChoiceModal.setAttribute('aria-hidden', 'true');
     }
 
     function moveNoButton() {
@@ -709,8 +729,8 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
 
       const actionsRect = giftChoiceActions.getBoundingClientRect();
       const noRect = giftChoiceNoBtn.getBoundingClientRect();
-      const maxX = Math.max(10, Math.floor((actionsRect.width - noRect.width) * 0.35));
-      const maxY = Math.max(8, Math.floor((actionsRect.height - noRect.height) * 0.42));
+      const maxX = Math.max(26, Math.floor((actionsRect.width - noRect.width) * 0.88));
+      const maxY = Math.max(24, Math.floor((actionsRect.height - noRect.height) * 0.92));
       const nextX = Math.floor((Math.random() * 2 - 1) * maxX);
       const nextY = Math.floor((Math.random() * 2 - 1) * maxY);
 
@@ -719,36 +739,49 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       giftChoiceNoBtn.style.setProperty('--escape-y', `${nextY}px`);
     }
 
+    function evadeNoOnPointerMove(event) {
+      if (giftChoiceNoBtn.hidden || giftChoiceNoHits >= 5) return;
+      const now = performance.now();
+      if (now - lastNoMoveAt < 45) return;
+
+      const noRect = giftChoiceNoBtn.getBoundingClientRect();
+      const cx = noRect.left + noRect.width / 2;
+      const cy = noRect.top + noRect.height / 2;
+      const dx = event.clientX - cx;
+      const dy = event.clientY - cy;
+      const distance = Math.hypot(dx, dy);
+
+      if (distance < 160) {
+        lastNoMoveAt = now;
+        moveNoButton();
+      }
+    }
+
     giftChoiceNoBtn.addEventListener('mouseenter', moveNoButton);
     giftChoiceNoBtn.addEventListener('touchstart', moveNoButton, { passive: true });
+    giftChoiceActions.addEventListener('mousemove', evadeNoOnPointerMove);
 
     giftChoiceNoBtn.addEventListener('click', (event) => {
       event.preventDefault();
       giftChoiceNoHits += 1;
 
-      const nextScale = Math.max(0.18, 1 - giftChoiceNoHits * 0.16);
-      giftChoiceNoBtn.style.setProperty('--escape-scale', `${nextScale}`);
-
       if (giftChoiceNoHits >= 5) {
         giftChoiceNoBtn.hidden = true;
-        giftChoiceHint.textContent = 'No bỏ cuộc rồi. Chỉ còn Yes thôi đó.';
+        giftChoiceNoBtn.style.display = 'none';
+        giftChoiceNoBtn.classList.remove('is-escaping');
+        giftChoiceNoBtn.style.removeProperty('--escape-x');
+        giftChoiceNoBtn.style.removeProperty('--escape-y');
+        giftChoiceHint.textContent = '';
         return;
       }
 
-      giftChoiceHint.textContent = `Bắt được No ${giftChoiceNoHits}/5 lần, nhưng nó vẫn chạy trốn...`;
+      giftChoiceHint.textContent = 'Chọn thật lòng nha.';
       moveNoButton();
     });
 
     giftChoiceYesBtn.addEventListener('click', () => {
-      closeGiftChoiceModal();
-      sectionState.letter.completed = true;
+      sectionState['gift-choice'].completed = true;
       showFinale();
-    });
-
-    giftChoiceModal.addEventListener('click', (event) => {
-      if (event.target === giftChoiceModal) {
-        closeGiftChoiceModal();
-      }
     });
 
     const fanartModal = document.getElementById('fanart-modal');
@@ -983,7 +1016,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       setTimeout(() => {
         document.getElementById('wax-seal').classList.add('show');
         letterUnrolled = true;
-        revealContinueButton('finale-btn');
+        completeSection('letter', { autoScrollNext: false });
       }, 2550);
     });
 
@@ -1081,6 +1114,11 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       if (blown.has(id)) return;
       blown.add(id);
       const board = document.getElementById('cake-board');
+      const toast = document.getElementById('candle-toast');
+      const candleTitle = document.getElementById('candle-title');
+      const countdownValue = document.getElementById('countdown-value');
+      const candleWishes = DATA[chosen].candleWishes || [];
+      const nextWish = candleWishes[blown.size - 1] || `Đã thổi nến ${blown.size}/5 ✨`;
       document.querySelectorAll(`.candle-flame[data-candle="${id}"]`).forEach((f) => {
         f.classList.add('candle-off');
       });
@@ -1090,26 +1128,33 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
 
       board.classList.add('cake-dimmed');
       launchConfetti(12, chosen === 'lan-linh' ? ['#E8B97A', '#E8836A', '#F0A0B8'] : ['#9B6EC8', '#C8A8F0', '#F0A0B8']);
-      const toast = document.getElementById('candle-toast');
-      toast.textContent = `Đã thổi nến ${blown.size}/5 ✨`;
+      toast.textContent = nextWish;
       toast.classList.remove('birthday-burst');
       toast.removeAttribute('data-burst-text');
       toast.classList.add('show');
 
       if (blown.size === 5) {
-        board.classList.add('cake-wish');
-        toast.textContent = 'HAPPY BIRTHDAY';
-        toast.setAttribute('data-burst-text', 'HAPPY BIRTHDAY TO YOU!! 🎉🎂');
-        toast.classList.add('birthday-burst');
-        launchConfetti(85, chosen === 'lan-linh' ? ['#E8B97A', '#E8836A', '#F0A0B8', '#F5ECD5'] : ['#9B6EC8', '#C8A8F0', '#F0A0B8', '#F5ECD5']);
+        if (countdownValue) {
+          countdownValue.textContent = '';
+        }
+        if (candleTitle) {
+          candleTitle.textContent = 'Chúc mừng sinh nhật thứ 4 của cậu cùng với chúng tớ!!';
+        }
+        setTimeout(() => {
+          board.classList.add('cake-wish');
+          toast.textContent = 'HAPPY BIRTHDAY';
+          toast.setAttribute('data-burst-text', 'HAPPY BIRTHDAY TO YOU!! 🎉🎂');
+          toast.classList.add('birthday-burst');
+          launchConfetti(85, chosen === 'lan-linh' ? ['#E8B97A', '#E8836A', '#F0A0B8', '#F5ECD5'] : ['#9B6EC8', '#C8A8F0', '#F0A0B8', '#F5ECD5']);
+        }, 900);
         setTimeout(() => {
           toast.classList.remove('birthday-burst', 'show');
           toast.removeAttribute('data-burst-text');
           toast.textContent = '';
-        }, 3700);
+        }, 4600);
         setTimeout(() => {
           completeSection('candles');
-        }, 4300);
+        }, 5200);
       }
     }
 
@@ -1150,12 +1195,6 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       setTimeout(() => title.classList.add('show'), 2000);
       setTimeout(() => actions.classList.add('show'), 3000);
     }
-
-    document.getElementById('finale-btn').addEventListener('click', () => {
-      if (!letterUnrolled) return;
-      openGiftChoiceModal();
-    });
-
     document.querySelectorAll('.sticky-nav a[data-section]').forEach((anchor) => {
       anchor.addEventListener('click', (event) => {
         const sectionName = anchor.getAttribute('data-section');

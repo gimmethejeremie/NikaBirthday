@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bất ngờ cho cậu!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/app.css" />
 
 </head>
@@ -144,7 +144,18 @@
         </article>
         <div class="rod-bottom" id="rod-bottom"></div>
       </div>
-      <button id="finale-btn" class="continue-btn" type="button">Vậy..., cậu có thích món quà của tớ không?</button>
+    </section>
+
+    <section id="s-gift-choice" class="scroll-section section-hidden">
+      <div class="gift-choice-panel">
+        <p class="gift-choice-kicker">Và còn một câu nữa nè...</p>
+        <h3 class="section-title gift-choice-title">Vậy... cậu có thích món quà của tớ không?</h3>
+        <p class="gift-choice-hint" id="gift-choice-hint">Chọn thật lòng nha.</p>
+        <div class="gift-choice-actions" id="gift-choice-actions">
+          <button class="pill-btn" id="gift-choice-yes" type="button">Yes</button>
+          <button class="pill-btn" id="gift-choice-no" type="button">No</button>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -167,17 +178,6 @@
       <button class="fanart-close" id="fanart-close" type="button" aria-label="Đóng fanart">×</button>
       <div class="fanart-cinema-image" id="fanart-modal-image"></div>
       <p class="fanart-cinema-artist" id="fanart-modal-artist"></p>
-    </div>
-  </div>
-
-  <div class="modal" id="gift-choice-modal" aria-hidden="true">
-    <div class="modal-card gift-choice-card">
-      <h4 class="modal-title">Vậy... cậu có thích món quà của tớ không?</h4>
-      <p class="gift-choice-hint" id="gift-choice-hint">Chọn thật lòng nha.</p>
-      <div class="gift-choice-actions" id="gift-choice-actions">
-        <button class="pill-btn" id="gift-choice-yes" type="button">Yes</button>
-        <button class="pill-btn" id="gift-choice-no" type="button">No</button>
-      </div>
     </div>
   </div>
 
