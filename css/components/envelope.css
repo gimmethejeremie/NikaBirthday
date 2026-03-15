@@ -1,0 +1,229 @@
+/* ==========================================================================
+   envelope.css — Phong bì + Overlay hero
+   
+   Flow: ẩn -> click mở nắp (flap rotates) -> letter slide lên ->
+         overlay slide up + fade out -> show main content
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Hero section: bao trọn viewport, che mọi content bên dưới
+   -------------------------------------------------------------------------- */
+#hero {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 30% 40%, var(--color-cream, #FFD1E6) 0%, transparent 60%),
+    var(--color-bg, #FFF0F5);
+  background-attachment: fixed;
+  transition:
+    transform  var(--duration-slower) var(--ease-in),
+    opacity    var(--duration-slower) var(--ease-in);
+}
+
+/* Trạng thái đóng hero overlay (JS thêm class .is-closing) */
+#hero.is-closing {
+  transform: translateY(-100vh);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Cover text phía trên envelope */
+.hero-cover-text {
+  text-align: center;
+  margin-bottom: var(--space-8);
+  opacity: 1;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+#hero.is-opened .hero-cover-text {
+  opacity: 0;
+}
+
+.hero-cover-text .title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  color: var(--color-primary, #FF6FAE);
+  margin-bottom: var(--space-2);
+}
+
+.hero-cover-text .subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted, #7A4A6A);
+}
+
+/* --------------------------------------------------------------------------
+   Envelope container
+   -------------------------------------------------------------------------- */
+.envelope {
+  position: relative;
+  width: min(320px, 85vw);
+  cursor: pointer;
+  filter: drop-shadow(var(--shadow-md));
+  transition: transform var(--duration-normal) var(--ease-bounce);
+}
+
+@media (min-width: 1024px) {
+  .hero-cover-text {
+    margin-bottom: var(--space-5);
+  }
+
+  .hero-cover-text .title {
+    font-size: clamp(2rem, 3vw, 2.7rem);
+  }
+
+  .hero-cover-text .subtitle {
+    font-size: 1.05rem;
+  }
+
+  .envelope {
+    width: min(260px, 30vw);
+  }
+
+  .envelope-prompt {
+    margin-top: var(--space-3);
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 820px) {
+  .hero-cover-text {
+    margin-bottom: var(--space-4);
+  }
+
+  .envelope {
+    width: min(240px, 28vw);
+  }
+}
+
+.envelope:hover {
+  transform: scale(1.04);
+}
+
+/* Touch: pas de hover, juste le tap feedback */
+@media (hover: none) {
+  .envelope:hover {
+    transform: none;
+  }
+}
+
+/* Prompt "click để mở" */
+.envelope-prompt {
+  text-align: center;
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted, #7A4A6A);
+  animation: pulse-text 2s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* --------------------------------------------------------------------------
+   Envelope body (cái phong bì)
+   -------------------------------------------------------------------------- */
+.envelope-body {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background: var(--envelope-bg, #FFF0F5);
+  border: 2px solid var(--color-border, #FFB3D1);
+  border-radius: var(--radius-md);
+  overflow: visible; /* flap cần visible để thò ra ngoài */
+}
+
+/* ----------- Flap phía trên (hình tam giác / thang hình) ----------- */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background: var(--envelope-flap, #FFB3D1);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform var(--duration-slow) var(--ease-out);
+  z-index: 2;
+}
+
+/* Flap mở khi envelope .is-opened */
+.envelope.is-opened .envelope-flap {
+  transform: rotateX(-180deg);
+}
+
+/* ----------- Hình thang trái và phải (tạo chiều sâu) ----------- */
+.envelope-side-left,
+.envelope-side-right {
+  position: absolute;
+  bottom: 0;
+  width: 52%;
+  height: 60%;
+  background: var(--color-cream, #FFD1E6);
+}
+
+.envelope-side-left {
+  left: 0;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.envelope-side-right {
+  right: 0;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* ----------- Seal / sticker ở tâm flap ----------- */
+.envelope-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--envelope-seal-bg, #FF6FAE);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: transform var(--duration-slow) var(--ease-bounce);
+}
+
+.envelope.is-opened .envelope-seal {
+  transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
+}
+
+/* ----------- Surat / letter yang keluar dari envelope ----------- */
+.envelope-letter {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  width: 82%;
+  height: 70%;
+  background: var(--letter-paper, #FFF9F0);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  border: 1px solid var(--color-border, #FFB3D1);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-slow) var(--ease-out) 100ms;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
+}
+
+/* Letter slide lên khi opened */
+.envelope.is-opened .envelope-letter {
+  transform: translateX(-50%) translateY(-55%);
+}
+
+.envelope-letter-icon {
+  font-size: 1.5rem;
+  opacity: 0.6;
+}

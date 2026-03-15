@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bất ngờ cho cậu!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/app.css" />
+
+</head>
+<body>
+  <audio id="bgm" loop src="./assets/bgm.mp3"></audio>
+  <button id="mute-btn" class="mute-btn" type="button">🎵</button>
+  <div id="route-progress" class="route-progress" aria-hidden="true">
+    <div id="route-progress-fill" class="route-progress-fill"></div>
+  </div>
+
+  <div id="s0" class="spa-screen active">
+    <div class="fx-particles" id="particles-s0"></div>
+    <div class="landing-wrap">
+      <div class="cake-emoji">🎂</div>
+      <p class="landing-text">Này, hình như có người muốn gửi điều gì đó đến cậu</p>
+      <button class="landing-btn" id="landing-open" type="button">Mở ra thử xem nào →</button>
+    </div>
+  </div>
+
+  <div id="s1" class="spa-screen">
+    <div class="choose-question">
+      <p class="small">Từ từ đã...</p>
+      <p class="big">Thế cậu là...?</p>
+    </div>
+    <div class="choose-split">
+      <div class="choose-half lan" data-choice="lan-linh">
+        <div class="fx-particles" id="particles-choose-lan"></div>
+        <img class="choose-char" src="./assets/lan-linh.png" alt="Nika Lan Linh">
+        <div class="choose-overlay">
+          <h2 class="choose-name lan">Nika Lan Linh</h2>
+          <div class="choose-btn">Tớ đây nè!</div>
+        </div>
+      </div>
+      <div class="choose-half linh" data-choice="linh-lan">
+        <div class="fx-particles" id="particles-choose-linh"></div>
+        <img class="choose-char" src="./assets/linh-lan.png" alt="Nika Linh Lan">
+        <div class="choose-overlay">
+          <h2 class="choose-name linh">Nika Linh Lan</h2>
+          <div class="choose-btn">Tớ đây nè!</div>
+        </div>
+      </div>
+      <div class="choose-divider"></div>
+    </div>
+  </div>
+
+  <div id="s8" class="spa-screen">
+    <div class="fx-particles" id="particles-s8"></div>
+    <div class="finale-split">
+      <div class="finale-half lan" id="fin-lan-half">
+        <img src="./assets/lan-linh.png" alt="Nika Lan Linh">
+        <div class="finale-panel" id="fin-lan-panel">
+          <p class="name">Nika Lan Linh</p>
+          <p class="msg" id="fin-msg-lan"></p>
+        </div>
+      </div>
+      <div class="finale-half linh" id="fin-linh-half">
+        <img src="./assets/linh-lan.png" alt="Nika Linh Lan">
+        <div class="finale-panel" id="fin-linh-panel">
+          <p class="name">Nika Linh Lan</p>
+          <p class="msg" id="fin-msg-linh"></p>
+        </div>
+      </div>
+    </div>
+    <div class="finale-divider"></div>
+    <h2 class="finale-title" id="finale-title">🎉 Happy Birthday! 🎉</h2>
+    <div class="finale-actions" id="finale-actions">
+      <button class="pill-btn" id="replay-btn" type="button">Xem lại</button>
+    </div>
+  </div>
+
+  <div id="scroll-page" class="scroll-page hidden">
+    <section id="s-typing" class="scroll-section section-hidden">
+      <h3 class="section-title">Ừm thì, tụi tớ có đôi lời muốn nói!</h3>
+      <article class="section-card">
+        <span class="quote-mark">"</span>
+        <p id="typing-text"></p>
+      </article>
+      <button id="typing-continue-btn" class="continue-btn" type="button">Tiếp tục ↓</button>
+    </section>
+
+    <section id="s-candles" class="scroll-section section-hidden">
+      <h3 class="section-title" id="candle-title"></h3>
+      <div class="countdown-wrap"><div id="countdown-value">3</div></div>
+      <div class="cake-board" id="cake-board"></div>
+      <p id="candle-toast"></p>
+    </section>
+
+    <section id="s-gifts" class="scroll-section section-hidden">
+      <h3 class="section-title" id="gift-title"></h3>
+      <div id="gift-grid" class="gift-grid"></div>
+      <div id="gift-progress" class="gift-progress"></div>
+      <button id="gifts-continue-btn" class="continue-btn" type="button">Tới đây xem fanart nè →</button>
+    </section>
+
+    <section id="s-fanart" class="scroll-section section-hidden">
+      <h3 class="section-title" id="fanart-title"></h3>
+      <div class="carousel">
+        <div class="carousel-track" id="carousel-track"></div>
+      </div>
+      <div class="carousel-controls">
+        <button class="pill-btn" id="fan-prev" type="button">←</button>
+        <span id="fan-counter">1 / 1</span>
+        <button class="pill-btn" id="fan-next" type="button">→</button>
+      </div>
+      <div class="thumbs" id="fan-thumbs"></div>
+      <p class="artist-caption" id="artist-caption"></p>
+      <button id="fanart-continue-btn" class="continue-btn" type="button">Xem lời chúc từ fan →</button>
+    </section>
+
+    <section id="s-messages" class="scroll-section section-hidden">
+      <h3 class="section-title" id="messages-title">Lời chúc từ fan</h3>
+      <div class="message-slider">
+        <div class="message-track" id="message-track"></div>
+      </div>
+      <div class="message-controls">
+        <button class="pill-btn" id="msg-prev" type="button">←</button>
+        <span id="msg-counter">1 / 1</span>
+        <button class="pill-btn" id="msg-next" type="button">→</button>
+      </div>
+      <div class="message-dots" id="message-dots"></div>
+      <button id="messages-continue-btn" class="continue-btn" type="button">Xem thư →</button>
+    </section>
+
+    <section id="s-letter" class="scroll-section section-hidden">
+      <h3 class="section-title">Thư từ một người bí ẩn</h3>
+      <p class="letter-label">✦ Của riêng tớ (Tớ là ai thì đố các cậu biết đấy) ✦</p>
+      <button class="letter-open" id="open-letter" type="button">Mở thư ra ↓</button>
+      <div class="scroll-letter">
+        <div class="rod-top"></div>
+        <article class="letter-paper" id="letter-paper">
+          <p class="letter-line" id="letter-date"></p>
+          <p class="letter-line" id="letter-greeting"></p>
+          <p class="letter-line" id="letter-body"></p>
+          <p class="letter-line letter-signoff" id="letter-signoff">With all my love,</p>
+          <p class="letter-line" id="letter-sign"></p>
+          <div class="wax-seal" id="wax-seal"></div>
+        </article>
+        <div class="rod-bottom" id="rod-bottom"></div>
+      </div>
+      <button id="finale-btn" class="continue-btn" type="button">Vậy..., cậu có thích món quà của tớ không?</button>
+    </section>
+  </div>
+
+  <div class="modal" id="gift-modal">
+    <div class="modal-card" id="modal-card">
+      <div class="modal-ribbon" id="modal-ribbon"></div>
+      <div class="modal-icon" id="modal-icon"></div>
+      <h4 class="modal-title" id="modal-title"></h4>
+      <div class="modal-image" id="modal-image"></div>
+      <p id="modal-body"></p>
+      <div class="modal-nav">
+        <button class="pill-btn" id="modal-prev" type="button">← Trước</button>
+        <button class="pill-btn" id="modal-next" type="button">Sau →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fanart-lightbox" id="fanart-modal">
+    <div class="modal-card" id="fanart-modal-card">
+      <button class="fanart-close" id="fanart-close" type="button" aria-label="Đóng fanart">×</button>
+      <div class="fanart-cinema-image" id="fanart-modal-image"></div>
+      <p class="fanart-cinema-artist" id="fanart-modal-artist"></p>
+    </div>
+  </div>
+
+  <div class="modal" id="gift-choice-modal" aria-hidden="true">
+    <div class="modal-card gift-choice-card">
+      <h4 class="modal-title">Vậy... cậu có thích món quà của tớ không?</h4>
+      <p class="gift-choice-hint" id="gift-choice-hint">Chọn thật lòng nha.</p>
+      <div class="gift-choice-actions" id="gift-choice-actions">
+        <button class="pill-btn" id="gift-choice-yes" type="button">Yes</button>
+        <button class="pill-btn" id="gift-choice-no" type="button">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/main.js" defer></script>
+</body>
+</html>
+

@@ -1,0 +1,234 @@
+/* ==========================================================================
+   minigame.css — Mini game thổi nến sinh nhật
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Section wrapper
+   -------------------------------------------------------------------------- */
+#section-minigame {
+  text-align: center;
+  padding-block: var(--space-16);
+}
+
+.minigame-instruction {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted, #7A4A6A);
+  margin-bottom: var(--space-8);
+}
+
+/* --------------------------------------------------------------------------
+   Bánh sinh nhật (CSS art)
+   -------------------------------------------------------------------------- */
+.cake-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: var(--space-8);
+}
+
+/* ---------- Nến trên bánh ---------- */
+.candles-row {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-end;
+  margin-bottom: var(--space-2);
+}
+
+.candle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--duration-fast) var(--ease-bounce);
+}
+
+.candle:hover  { transform: scale(1.1); }
+.candle:active { transform: scale(0.95); }
+
+@media (hover: none) {
+  .candle:hover { transform: none; }
+}
+
+/* Ngọn lửa */
+.candle-flame {
+  width: 14px;
+  height: 20px;
+  background: radial-gradient(ellipse at 50% 80%, #FFE044 0%, #FF8C00 60%, #FF4500 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin: bottom center;
+  animation: flicker 1.2s ease-in-out infinite alternate;
+  transition: opacity var(--duration-normal) var(--ease-out);
+  box-shadow: 0 0 8px 2px rgba(255, 180, 0, 0.5);
+}
+
+.candle.is-blown .candle-flame {
+  opacity: 0;
+  transform: scaleY(0);
+  animation: none;
+}
+
+@keyframes flicker {
+  0%   { transform: scaleX(1)   scaleY(1)   rotate(-2deg); }
+  25%  { transform: scaleX(0.9) scaleY(1.1) rotate(2deg);  }
+  50%  { transform: scaleX(1.1) scaleY(0.9) rotate(-1deg); }
+  75%  { transform: scaleX(0.95)scaleY(1.05)rotate(1deg);  }
+  100% { transform: scaleX(1)   scaleY(1)   rotate(0deg);  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .candle-flame {
+    animation: none;
+  }
+}
+
+/* Thân nến */
+.candle-body {
+  width: 12px;
+  height: 40px;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.4) 0%,
+    var(--color-primary, #FF6FAE) 30%,
+    var(--color-primary-dark, #E0538E) 100%
+  );
+  border-radius: 2px 2px 0 0;
+  position: relative;
+}
+
+/* Wick */
+.candle-wick {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 6px;
+  background: #3A1A2E;
+  border-radius: 1px;
+}
+
+/* Sáp chảy */
+.candle-drip {
+  position: absolute;
+  top: 4px;
+  left: 1px;
+  width: 6px;
+  height: 10px;
+  background: var(--color-cream, #FFD1E6);
+  border-radius: 0 0 4px 4px;
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   Bánh (CSS art đơn giản — 2 tầng)
+   -------------------------------------------------------------------------- */
+.cake-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cake-tier {
+  background: linear-gradient(
+    to right,
+    var(--color-cream, #FFD1E6) 0%,
+    var(--color-bg-alt, #FFF6EC) 50%,
+    var(--color-cream, #FFD1E6) 100%
+  );
+  border: 2px solid var(--color-border, #FFB3D1);
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.cake-tier--top {
+  width: 100px;
+  height: 40px;
+  z-index: 1;
+}
+
+.cake-tier--bottom {
+  width: 140px;
+  height: 50px;
+  margin-top: -4px;
+}
+
+/* Frosting top edge */
+.cake-tier::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -4px;
+  right: -4px;
+  height: 16px;
+  background: repeating-radial-gradient(
+    circle at 50% 0%,
+    var(--color-surface, #fff) 0%,
+    var(--color-surface, #fff) 8px,
+    transparent 8px
+  );
+  background-size: 20px 100%;
+  background-position: center top;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  overflow: hidden;
+}
+
+/* Plate */
+.cake-plate {
+  width: 160px;
+  height: 12px;
+  background: linear-gradient(to right, #e0d0c0, #f0e8d8, #e0d0c0);
+  border-radius: var(--radius-full);
+  margin-top: -2px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* --------------------------------------------------------------------------
+   Completed state
+   -------------------------------------------------------------------------- */
+.minigame-completed {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  animation: pop-in var(--duration-slow) var(--ease-bounce);
+}
+
+.minigame-completed.is-visible {
+  display: flex;
+}
+
+.minigame-completed-icon {
+  font-size: 4rem;
+}
+
+.minigame-completed-text {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-primary, #FF6FAE);
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .minigame-completed {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Progress indicator
+   -------------------------------------------------------------------------- */
+.candle-count {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted, #7A4A6A);
+  margin-bottom: var(--space-4);
+}
+
+.candle-count strong {
+  color: var(--color-primary, #FF6FAE);
+}
