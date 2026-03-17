@@ -11,6 +11,9 @@ Project hien dang chay bang:
 - `css/app.css`
 - `js/main.js`
 
+Chot kien truc CSS hien tai: monolithic `css/app.css` la nguon su that duy nhat cho runtime.
+Token/interactive state nen duoc cap nhat tai `:root` va block style trong `css/app.css` de tranh song song 2 he token.
+
 `js/main.js` dang chua noi dung du lieu hard-code (`const DATA = ...`).
 
 Bo file theo huong module (`js/app.js`, `js/components/*`, `data/content.vi.json`, `css/base.css`, `css/tokens.css`, `css/components/*`) hien CHUA duoc `index.html` su dung o runtime.

@@ -48,6 +48,9 @@ export function initMinigame({
     const handleBlow = () => {
       if (candle.classList.contains('is-blown')) return;
       candle.classList.add('is-blown');
+      candle.setAttribute('aria-pressed', 'true');
+      candle.setAttribute('aria-disabled', 'true');
+      candle.setAttribute('tabindex', '-1');
       blownCount++;
 
       updateRemaining(remainingEl, count - blownCount, count);

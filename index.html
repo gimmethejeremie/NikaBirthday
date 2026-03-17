@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bất ngờ cho cậu!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/app.css" />
 
@@ -18,14 +20,15 @@
   <div class="floating-sparkle" style="animation-delay: 8s; --sparkle-drift: 20px;"></div>
 
   <audio id="bgm" src="" muted></audio>
-  <button id="mute-btn" class="mute-btn" type="button">🎵</button>
+  <button id="mute-btn" class="mute-btn" type="button" aria-label="Bật nhạc nền" aria-pressed="false">🎵</button>
   <div id="now-playing" class="now-playing"></div>
+  <p id="ui-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
   <div id="route-progress" class="route-progress" aria-hidden="true">
     <div id="route-progress-fill" class="route-progress-fill"></div>
   </div>
 
   <div id="s0" class="spa-screen active">
-    <svg class="bg-celestial" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <svg class="bg-celestial bg-celestial--screen" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <circle cx="-15" cy="200" r="150" fill="none" stroke="rgba(250,199,117,.13)" stroke-width="1.5"/>
       <circle cx="-15" cy="200" r="120" fill="none" stroke="rgba(250,199,117,.08)" stroke-width="1"/>
       <circle cx="-15" cy="200" r="90" fill="rgba(250,199,117,.05)"/>
@@ -81,8 +84,8 @@
       <p class="big">Thế cậu là...?</p>
     </div>
     <div class="choose-split">
-      <div class="choose-half lan" data-choice="lan-linh">
-        <svg class="bg-celestial" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0" viewBox="0 0 340 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <button class="choose-half lan" data-choice="lan-linh" type="button" aria-label="Chọn Nika Lan Linh">
+        <svg class="bg-celestial bg-celestial--half" viewBox="0 0 340 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <circle cx="28" cy="210" r="104" fill="#fac775" fill-opacity="0.09"/>
           <circle cx="28" cy="210" r="132" fill="none" stroke="#fac775" stroke-opacity="0.26" stroke-width="2"/>
           <circle cx="28" cy="210" r="160" fill="none" stroke="#fac775" stroke-opacity="0.12" stroke-width="1.5"/>
@@ -103,9 +106,9 @@
           <h2 class="choose-name lan">Nika Lan Linh</h2>
           <div class="choose-btn">Tớ đây nè!</div>
         </div>
-      </div>
-      <div class="choose-half linh" data-choice="linh-lan">
-        <svg class="bg-celestial" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0" viewBox="0 0 340 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      </button>
+      <button class="choose-half linh" data-choice="linh-lan" type="button" aria-label="Chọn Nika Linh Lan">
+        <svg class="bg-celestial bg-celestial--half" viewBox="0 0 340 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <circle cx="308" cy="192" r="108" fill="#9b6ec8" fill-opacity="0.10"/>
           <circle cx="308" cy="192" r="136" fill="none" stroke="#c8a8f0" stroke-opacity="0.24" stroke-width="1.8"/>
           <circle cx="334" cy="170" r="118" fill="#0E0818" opacity="0.72"/>
@@ -128,7 +131,7 @@
           <h2 class="choose-name linh">Nika Linh Lan</h2>
           <div class="choose-btn">Tớ đây nè!</div>
         </div>
-      </div>
+      </button>
       <div class="choose-divider"></div>
     </div>
   </div>
@@ -138,7 +141,7 @@
     <div class="fx-particles" id="particles-s8"></div>
     <div class="finale-split">
       <div class="finale-half lan" id="fin-lan-half">
-        <svg class="bg-celestial" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0" viewBox="0 0 340 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <svg class="bg-celestial bg-celestial--half" viewBox="0 0 340 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <circle cx="28" cy="210" r="104" fill="#fac775" fill-opacity="0.09"/>
           <circle cx="28" cy="210" r="132" fill="none" stroke="#fac775" stroke-opacity="0.26" stroke-width="2"/>
           <circle cx="28" cy="210" r="160" fill="none" stroke="#fac775" stroke-opacity="0.12" stroke-width="1.5"/>
@@ -160,7 +163,7 @@
         </div>
       </div>
       <div class="finale-half linh" id="fin-linh-half">
-        <svg class="bg-celestial" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0" viewBox="0 0 340 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <svg class="bg-celestial bg-celestial--half" viewBox="0 0 340 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <circle cx="308" cy="192" r="108" fill="#9b6ec8" fill-opacity="0.10"/>
           <circle cx="308" cy="192" r="136" fill="none" stroke="#c8a8f0" stroke-opacity="0.24" stroke-width="1.8"/>
           <circle cx="334" cy="170" r="118" fill="#0E0818" opacity="0.72"/>
@@ -192,7 +195,7 @@
   </div>
 
   <div id="scroll-page" class="scroll-page hidden">
-    <svg class="bg-celestial bg-celestial--lan" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <svg class="bg-celestial bg-celestial--fixed bg-celestial--lan" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <circle cx="-15" cy="200" r="150" fill="none" stroke="rgba(250,199,117,.13)" stroke-width="1.5"/>
       <circle cx="-15" cy="200" r="120" fill="none" stroke="rgba(250,199,117,.08)" stroke-width="1"/>
       <circle cx="-15" cy="200" r="90" fill="rgba(250,199,117,.05)"/>
@@ -209,7 +212,7 @@
       <circle cx="240" cy="330" r="1.5" fill="rgba(250,199,117,.25)"/>
       <circle cx="200" cy="360" r="1"   fill="rgba(232,131,106,.20)"/>
     </svg>
-    <svg class="bg-celestial bg-celestial--linh" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <svg class="bg-celestial bg-celestial--fixed bg-celestial--linh" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <circle cx="695" cy="200" r="148" fill="rgba(155,110,200,.07)"/>
       <circle cx="695" cy="200" r="148" fill="none" stroke="rgba(200,168,240,.13)" stroke-width="1.5"/>
       <circle cx="695" cy="200" r="120" fill="none" stroke="rgba(200,168,240,.07)" stroke-width="1"/>
@@ -243,6 +246,7 @@
         <span class="quote-mark">"</span>
         <p id="typing-text"></p>
       </article>
+      <button id="typing-skip-btn" class="pill-btn typing-skip-btn" type="button" hidden>Xem nhanh toàn bộ</button>
       <button id="typing-continue-btn" class="continue-btn" type="button">Tiếp tục ↓</button>
     </section>
 
@@ -266,7 +270,7 @@
       <h3 class="section-title" id="candle-title"></h3>
       <div class="countdown-wrap"><div id="countdown-value">3</div></div>
       <div class="cake-board" id="cake-board"></div>
-      <p id="candle-toast"></p>
+      <p id="candle-toast" aria-live="polite"></p>
     </section>
 
     <section id="s-gifts" class="scroll-section section-hidden">
