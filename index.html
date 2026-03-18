@@ -396,6 +396,19 @@
       <p class="wish-modal__body" id="wish-modal-body"></p>
     </article>
   </div>
+
+  <div class="modal wish-modal" id="audio-warning-modal" aria-hidden="true">
+    <article class="modal-card wish-modal__card audio-warning__card" id="audio-warning-card" role="dialog" aria-modal="true" aria-labelledby="audio-warning-title">
+      <button class="wish-modal__close" id="audio-warning-close" type="button" aria-label="Đóng">×</button>
+      <p class="wish-modal__kicker">Cảnh báo trước khi phát quà bí mật</p>
+      <h4 class="modal-title wish-modal__title" id="audio-warning-title">Cảnh báo cringe, khuyến khích tắt stream để nghe</h4>
+      <p class="wish-modal__body audio-warning__body">Cậu muốn bật audio quà bí mật luôn không? Nếu đi tiếp thì nhạc nền sẽ bật lại.</p>
+      <div class="audio-warning__actions">
+        <button class="pill-btn" id="audio-warning-mute" type="button">Đi tiếp</button>
+        <button class="pill-btn" id="audio-warning-play" type="button">Bật audio quà</button>
+      </div>
+    </article>
+  </div>
   <script src="./js/main.js" defer></script>
 </body>
 </html>

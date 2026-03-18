@@ -267,19 +267,25 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
 
     const PRE_COUNTDOWN_SECTIONS = ['precountdown-1', 'precountdown-2', 'precountdown-3', 'precountdown-4'];
     const SECTION_ORDER = ['greeting', 'typing', ...PRE_COUNTDOWN_SECTIONS, 'candles', 'gifts', 'messages', 'letter', 'gift-choice'];
-    const sectionState = {
-      greeting: { unlocked: true, completed: false },
-      typing: { unlocked: false, completed: false },
-      'precountdown-1': { unlocked: false, completed: false },
-      'precountdown-2': { unlocked: false, completed: false },
-      'precountdown-3': { unlocked: false, completed: false },
-      'precountdown-4': { unlocked: false, completed: false },
-      candles: { unlocked: false, completed: false },
-      gifts: { unlocked: false, completed: false },
-      messages: { unlocked: false, completed: false },
-      letter: { unlocked: false, completed: false },
-      'gift-choice': { unlocked: false, completed: false }
-    };
+    const FIRST_SECTION = SECTION_ORDER[0];
+    const CONTINUE_BUTTON_IDS = [
+      'typing-continue-btn',
+      'greeting-continue-btn',
+      'gifts-continue-btn',
+      'messages-continue-btn'
+    ];
+
+    function createInitialSectionState() {
+      return SECTION_ORDER.reduce((acc, name, index) => {
+        acc[name] = {
+          unlocked: index === 0,
+          completed: false
+        };
+        return acc;
+      }, {});
+    }
+
+    const sectionState = createInitialSectionState();
 
     const bgm = document.getElementById('bgm');
     const muteBtn = document.getElementById('mute-btn');
@@ -297,6 +303,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     let bgmResumeVolume = 1;
     let typingTimerId = null;
     let typingRuntime = null;
+    let secretAudioWarningAccepted = false;
 
     function announceStatus(message) {
       if (!uiStatus || !message) return;
@@ -325,6 +332,11 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
         window.clearTimeout(timerId);
         timerId = window.setTimeout(() => callback(...args), waitMs);
       };
+    }
+
+    function clearTimeoutBucket(timerIds) {
+      timerIds.forEach((timerId) => clearTimeout(timerId));
+      return [];
     }
 
     const throttledUpdateRouteProgress = rafThrottle(() => {
@@ -421,6 +433,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     function launchConfetti(amount, colors) {
       const palette = colors || ['#E8B97A', '#E8836A', '#9B6EC8', '#C8A8F0', '#F5ECD5'];
       const frag = document.createDocumentFragment();
+      const batch = [];
       for (let i = 0; i < amount; i += 1) {
         const c = document.createElement('div');
         c.className = 'confetti';
@@ -429,12 +442,13 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
         c.style.setProperty('--ex', `${Math.random() * 100}vw`);
         c.style.opacity = `${Math.random() * 0.4 + 0.6}`;
         c.style.borderRadius = `${Math.random() > 0.5 ? '2px' : '50%'}`;
+        batch.push(c);
         frag.appendChild(c);
       }
       document.body.appendChild(frag);
-      // Remove after animation completes
+      // Remove only this confetti batch so overlapping bursts don't disappear early.
       setTimeout(() => {
-        document.querySelectorAll('.confetti').forEach((c) => c.remove());
+        batch.forEach((c) => c.remove());
       }, 3200);
     }
 
@@ -728,13 +742,13 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       }
       typingRuntime = null;
 
-      SECTION_ORDER.forEach((name, index) => {
-        sectionState[name].unlocked = index === 0;
+      SECTION_ORDER.forEach((name) => {
+        sectionState[name].unlocked = name === FIRST_SECTION;
         sectionState[name].completed = false;
         const el = getSectionEl(name);
         if (!el) return;
         el.classList.remove('section-visible', 'section-reveal');
-        if (index === 0) {
+        if (name === FIRST_SECTION) {
           el.style.display = 'flex';
           el.classList.add('section-visible');
           el.classList.remove('section-hidden');
@@ -744,10 +758,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
         }
       });
 
-      hideContinueButton('typing-continue-btn');
-      hideContinueButton('greeting-continue-btn');
-      hideContinueButton('gifts-continue-btn');
-      hideContinueButton('messages-continue-btn');
+      CONTINUE_BUTTON_IDS.forEach(hideContinueButton);
       const typingSkipBtn = document.getElementById('typing-skip-btn');
       if (typingSkipBtn) typingSkipBtn.hidden = true;
       resetPrecountdownLines();
@@ -879,6 +890,62 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       updateNowPlaying();
     }
 
+    function openAudioWarningModal() {
+      const modal = document.getElementById('audio-warning-modal');
+      const card = document.getElementById('audio-warning-card');
+      const closeBtn = document.getElementById('audio-warning-close');
+      const muteBtnEl = document.getElementById('audio-warning-mute');
+      const playBtn = document.getElementById('audio-warning-play');
+
+      if (!modal || !closeBtn || !muteBtnEl || !playBtn) {
+        return Promise.resolve(true);
+      }
+
+      return new Promise((resolve) => {
+        let settled = false;
+
+        const cleanup = () => {
+          closeBtn.removeEventListener('click', onMute);
+          muteBtnEl.removeEventListener('click', onMute);
+          playBtn.removeEventListener('click', onPlay);
+          modal.removeEventListener('click', onBackdropClick);
+          document.removeEventListener('keydown', onEscClose);
+        };
+
+        const finalize = (shouldPlayAudio) => {
+          if (settled) return;
+          settled = true;
+          modal.classList.remove('show');
+          modal.setAttribute('aria-hidden', 'true');
+          cleanup();
+          resolve(shouldPlayAudio);
+        };
+
+        const onPlay = () => finalize(true);
+        const onMute = () => finalize(false);
+        const onBackdropClick = (event) => {
+          if (event.target === modal) finalize(false);
+        };
+        const onEscClose = (event) => {
+          if (event.key !== 'Escape') return;
+          event.preventDefault();
+          finalize(false);
+        };
+
+        closeBtn.addEventListener('click', onMute);
+        muteBtnEl.addEventListener('click', onMute);
+        playBtn.addEventListener('click', onPlay);
+        modal.addEventListener('click', onBackdropClick);
+        document.addEventListener('keydown', onEscClose);
+
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+        card?.classList.remove('gift-pop');
+        void card?.offsetWidth;
+        card?.classList.add('gift-pop');
+      });
+    }
+
     function updateNowPlaying() {
       const nowPlayingEl = document.getElementById('now-playing');
       if (!nowPlayingEl) return;
@@ -999,22 +1066,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
 
     function choosePerson(id) {
       chosen = id;
-      openedGifts = new Set();
-      currentGiftIdx = 0;
-      typingStarted = false;
-      candleStarted = false;
-      typingDone = false;
-      letterUnrolled = false;
-      giftsBuilt = false;
-      messagesBuilt = false;
-      letterBuilt = false;
-      secretUnlockedByGift = new Set();
-      activeWishEntries = [];
-      renderedWishCount = 0;
-      clearGiftAnimationTimers();
-      clearPrecountdownTimers();
-      wishCardObserver?.disconnect();
-      wishSectionObserver?.disconnect();
+      resetRouteRuntimeState();
 
       const data = DATA[id];
       const isLan = id === 'lan-linh';
@@ -1037,10 +1089,30 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
         setProgressVisible(true);
         stickyNav?.classList.add('show');
         setProgressTheme();
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.scrollTo({ top: 0, behavior: 'auto' });
         updateRouteProgress();
         startSection('greeting');
       }, 500);
+    }
+
+    function resetRouteRuntimeState() {
+      openedGifts = new Set();
+      currentGiftIdx = 0;
+      typingStarted = false;
+      candleStarted = false;
+      typingDone = false;
+      letterUnrolled = false;
+      giftsBuilt = false;
+      messagesBuilt = false;
+      letterBuilt = false;
+      giftChoiceNoHits = 0;
+      secretUnlockedByGift = new Set();
+      activeWishEntries = [];
+      renderedWishCount = 0;
+      clearGiftAnimationTimers();
+      clearPrecountdownTimers();
+      wishCardObserver?.disconnect();
+      wishSectionObserver?.disconnect();
     }
 
     function populateSections(data) {
@@ -1128,8 +1200,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     }
 
     function clearPrecountdownTimers() {
-      preCountdownTimers.forEach((timerId) => clearTimeout(timerId));
-      preCountdownTimers = [];
+      preCountdownTimers = clearTimeoutBucket(preCountdownTimers);
     }
 
     function renderPrecountdownLines() {
@@ -1235,8 +1306,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     }
 
     function clearGiftAnimationTimers() {
-      giftAnimationTimers.forEach((timerId) => clearTimeout(timerId));
-      giftAnimationTimers = [];
+      giftAnimationTimers = clearTimeoutBucket(giftAnimationTimers);
     }
 
     function setGiftModalPhase(phase) {
@@ -1528,6 +1598,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
 
       const currentSrc = secretVoiceAudio.getAttribute('src') || '';
       if (currentSrc !== voiceSrc) {
+        secretAudioWarningAccepted = false;
         secretVoiceAudio.src = voiceSrc;
         secretVoiceAudio.load();
       }
@@ -1536,15 +1607,30 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       syncSecretCassetteState();
     }
 
-    secretCassetteToggle?.addEventListener('click', () => {
+    secretCassetteToggle?.addEventListener('click', async () => {
       playCassetteClick();
       if (!secretVoiceAudio || !secretCassetteToggle || secretCassetteToggle.disabled) return;
       if (secretVoiceAudio.paused) {
+        if (!secretAudioWarningAccepted) {
+          const shouldPlayAudio = await openAudioWarningModal();
+          if (!shouldPlayAudio) {
+            resumeBgmAfterSecret();
+            if (secretCassetteHint) {
+              secretCassetteHint.textContent = 'Đã quay lại nhạc nền. Khi muốn thì nhấn lại để phát quà bí mật.';
+            }
+            syncSecretCassetteState();
+            return;
+          }
+          secretAudioWarningAccepted = true;
+        }
+
         fadeOutAndStopBgm(800, { rememberForResume: true });
         secretVoiceAudio.play().catch(() => {
           if (secretCassetteHint) {
             secretCassetteHint.textContent = 'Trình duyệt chưa cho phát. Nhấn lại lần nữa nhé.';
           }
+          resumeBgmAfterSecret();
+          syncSecretCassetteState();
         });
       } else {
         secretVoiceAudio.pause();
@@ -1714,13 +1800,6 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       sectionState['gift-choice'].completed = true;
       showFinale();
     });
-
-    function fallbackNode(text) {
-      const div = document.createElement('div');
-      div.className = 'img-fallback';
-      div.textContent = text;
-      return div;
-    }
 
     function getMessageBoardEntries() {
       const source = DATA[chosen].fanMessages || [];
@@ -2307,8 +2386,8 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     // ========== CUTE CURSOR + WATER TRAIL ==========
     function initCursorEffect() {
       // Skip on touch/coarse-pointer devices
-      const isFinePonter = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      if (!isFinePonter) return;
+      const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (!isFinePointer) return;
 
       document.body.classList.add('custom-cursor');
 

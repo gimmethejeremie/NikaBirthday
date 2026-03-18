@@ -57,15 +57,19 @@ Luu y:
 
 ## Danh sach asset bat buoc (theo code hien tai)
 
-Dat cac file nay truc tiep trong thu muc `assets/` (khong phai `assets/audio` hay `assets/images`):
+Dat file dung thu muc nhu ben duoi (runtime dang tham chieu `assets/audio/*` va `assets/images/*`):
 
-- `assets/bgm.mp3`
-- `assets/lan-linh.png`
-- `assets/linh-lan.png`
-- `assets/gift-ll-1.jpg` ... `assets/gift-ll-5.jpg`
-- `assets/gift-ln-1.jpg` ... `assets/gift-ln-5.jpg`
-- `assets/fanart-ll-1.jpg`, `assets/fanart-ll-2.jpg`
-- `assets/fanart-ln-1.jpg`, `assets/fanart-ln-2.jpg`
+- `assets/images/lan-linh.png`
+- `assets/images/linh-lan.png`
+- `assets/images/gift-ll-1.jpg` ... `assets/images/gift-ll-5.jpg`
+- `assets/images/gift-ln-1.jpg` ... `assets/images/gift-ln-5.jpg`
+- `assets/images/fanart-ll-1.jpg`, `assets/images/fanart-ll-2.jpg`
+- `assets/images/fanart-ln-1.jpg`, `assets/images/fanart-ln-2.jpg`
+- `assets/audio/Linh.mp3`, `assets/audio/Lan.mp3`
+- `assets/audio/Arthur Vyncke - All Aboard the Space Train.mp3`
+- `assets/audio/Arthur Vyncke - And the Land Came Back to Life.mp3`
+- `assets/audio/Ben Elliott - Climbing the Andes.mp3`
+- `assets/audio/Dalton Attig - Mochi in the Morning.mp3`
 
 Neu thieu file, website van chay nhung se mat anh/nhac o mot so section.
 
@@ -97,6 +101,6 @@ Noi dung co the sua:
 Neu muon ve kien truc sach hon:
 - Chuyen runtime tu `js/main.js` sang `js/app.js`
 - Dong bo du lieu ve `data/content.vi.json`
-- Dong bo duong dan asset ve `assets/audio/*` va `assets/images/*`
+- Giu mot convention dat ten file asset nhat quan de de cap nhat trong `DATA`.
 
 Hien tai README nay uu tien mo ta DUNG trang thai dang chay.

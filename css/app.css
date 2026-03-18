@@ -2316,6 +2316,37 @@
       padding-right: 4px;
     }
 
+    .audio-warning__card {
+      width: min(640px, 100%);
+      border: 1px solid rgba(255, 232, 200, 0.42);
+      background:
+        radial-gradient(circle at 16% 14%, rgba(255, 218, 176, 0.14), transparent 38%),
+        linear-gradient(145deg, rgba(26, 12, 25, 0.97), rgba(44, 16, 54, 0.96));
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.58);
+    }
+
+    #audio-warning-modal {
+      background: rgba(4, 2, 10, 0.78);
+      backdrop-filter: blur(10px);
+    }
+
+    .audio-warning__body {
+      margin-bottom: 16px;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .audio-warning__actions {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .audio-warning__actions .pill-btn {
+      min-width: 176px;
+    }
+
     #s-gift-choice {
       display: flex;
       align-items: center;
