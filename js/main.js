@@ -71,8 +71,13 @@
           { emoji: '💪', msg: 'Chúc mừng sinh nhật quý cô ngầu lợi tuy hơi còi nhưng được cái tài giỏi và làm việc không mệt mỏi để nhanh kiếm được tiền tỏi :3' },
           { emoji: '💖', msg: 'Gái iu sinh nhật vui vẻ, tuổi mới năng động hơn tuổi cũ nhó, mong gái không phá thêm gì nữa  TvT' },
           { emoji: '🐧', msg: 'Năm mới, tuổi mới, một khởi đầu mới. Tui chúc Linh sinh nhật năm nay nhiều sức khỏe, ít bị cảm hơn nha. Hồi mới debut Linh có đặt mục tiêu là chơi thật nhiều game, nên năm nay nhớ chơi nhiều game hơn nữa để cho mấy con Cua xem nha, chứ không thôi mấy nhỏ quên giọng Linh á 🐧. 🐸💢' },
-          { emoji: '🎊', msg: 'Chúc mừng sinh nhật quý cô ngầu lợi nha! Tuy hơi còi nhưng tài giỏi hết nấc, chúc năm mới năng động hơn, không phá thêm gì nữa TvT và Kani càng ngày càng đông hơn 💛' },
-          { emoji: '🌈', msg: 'Linh ơi sinh nhật vui vẻ! Cảm ơn những khoảnh khắc dễ chịu và tiếng cười mỗi lần xem stream, chúc em sống thọ, sức khỏe dồi dào, mục tiêu cá nhân đạt hết và luôn được mọi người yêu quý nha :>' }
+          { emoji: '🎊', msg: '"Em chúc chị sinh nhật thật vui vẻ, có 1 buổii ăn sinh nhật tuyệt vời nhất, chúc chị ngày càng xinh gái hơn, thuận lợi hơn trên còn đường mình chọn, em hong có xem chị nhiều lắm nhưng em mong chị sẽ thành công hơn những gì mình muốn, chúc chị sinh nhật vui vẻ nha>< Cố lên chị nhe!!"' },
+          { emoji: '🌈', msg: 'Chúc Linh Tuổi mới ngày càng đẹp, càng giải trí, tuổi mới vui vẻ ko quạu nghe!!' },
+          { emoji: '📝', msg: 'Dù không xem Linh nhưng lướt được vài cái short thấy giọng Linh khá thú vị. Chúc Linh sinh nhật vv.' },
+          { emoji: '🎂', msg: 'Snvv nhen' },
+          { emoji: '💛', msg: 'helu Linh, Demi chúc Linh tuổi mới luôn xinh đẹp, bình an và gặt hái được thật nhiều thành công ạ💛' },
+          { emoji: '🦀', msg: 'Chúc mừng sinh nhật Linh, chúc Linh một năm đầy vui vẻ, hạnh phúc và nhiều điều may mắn 🦀🦀🦀' },
+          { emoji: '🌟', msg: 'Đợt anniversary này hi vọng Linh sẽ gặp nhiều thành công hơn, gặp được nhiều con cua lọt hố hơn, đồng thời cũng mong rằng nàng tinh linh xứ bánh kẹo đây sẽ thống lĩnh cả 1 đàn cua đông đảo trong tương lai không xa' }
         ],
         letter: {
           date: 'Hà Nội, 21/03/2026',
@@ -100,6 +105,9 @@ Cũng đừng ốm nữa nhé.
 Kani yêu cậu!!!!
 
 Cậu thì không báo, nhưng mà ồn điên. (Tất nhiên là tớ thích cái ồn đấy)
+
+Xin lỗi vì văn phong tớ lủng củng, nhưng mà đều là tớ rút từ tận tâm can mình gửi đến cậu, mong là cậu có thể cảm nhận được tình cảm chân thành này của tớ, cũng như toàn bộ Kani dành cho cậu.
+
 Thế nhé, sống thật tốt vào!`,
           sign: 'Một Kani nào đó trên mạng'
         },
@@ -177,8 +185,13 @@ Thế nhé, sống thật tốt vào!`,
           { emoji: '🍀', msg: 'Chúc Lan sinh nhật vui vẻ luôn xinh đẹp và trẻ khoẻ tắm rửa sạch sẽ không bị ghẻ và làm việc gì cũng suôn sẻ Happy birthday :v' },
           { emoji: '🎤', msg: 'Chúc mừng sinh nhật nhá gái, chúc gái tuổi mới hát hay hơn tuổi cũ, khỏe mạnh hơn và vui vẻ hơn nhaaaa' },
           { emoji: '🐸', msg: 'Tui không biết chúc gì nhiều, nhưng chúc Lan sinh nhật năm nay tràn đầy niềm vui, đỡ stress hơn năm trước, và stream nhiều hơn cho các Nal xem, đặc biệt là anh R giấu tên nào đó . 🐸💢' },
-          { emoji: '💖', msg: 'Chúc Lan sinh nhật thật vui nha công chúa! Luôn tràn đầy năng lượng, stream bùng nổ hơn nữa và hát kara ngọt hơn mỗi ngày, Nal yêu Lan lắm 💜 Mong sớm 50k subs luôn á :>>>' },
-          { emoji: '🎊', msg: 'Lan ơi chúc mừng sinh nhật! Cảm ơn chị đã mang tiếng cười và năng lượng tích cực mỗi buổi stream, chúc chị sống lâu trăm tuổi, phát triển mạnh mẽ tài năng ca hát và đạt mốc sub thật cao nha :D' }
+          { emoji: '💖', msg: '"Em chúc chị có 1 buổi sinh nhật thật bùng nổ, vui vẻ và hạnh phúc mọi thứ suôn sẽ và tuyệt vời hơn đến với chị, em biết chị có thể sẽ khó khăn ở 1 lúc nào đó, 1 điều mà k thể chia sẻ cho mng được, nhưng chị cố lên nhé, cố gắng thì chị sẽ hái được trái ngọt, chúc chị sinh nhật vui vẻ nha<33 Chị đừng cố quá sức nữa nhen!!"' },
+          { emoji: '🎊', msg: 'Chúc Lan tuổi mới càng ngày càng xinh đẹp, hát hay, càng hài, càng giàu nhé!!' },
+          { emoji: '💜', msg: 'Chúc Lan sinh nhật vv, tuổi mới thành công và rực rỡ hơn nữa, có thêm nhiều content thú vị hơn (hy vọng được thấy Lan làm asmr), luôn tươi cười và hạnh phúc.' },
+          { emoji: '🎂', msg: 'Snvv nhen' },
+          { emoji: '🫶', msg: 'hello Lan lại là Demi đây :D, chúc Lan tuổi mới bel, vui vẻ và thật nhìu sức khỏe để stream nhìu hơn nhaa💜' },
+          { emoji: '🍀', msg: 'Chúc mừng sinh nhật Lan, chúc Lan nhiều điều may mắn, niềm vui xảy đến 💜💜💜' },
+          { emoji: '🌸', msg: 'Chúc Lan sinh nhật vui vẻ, dù rằng bản thân tôi gần như rất ít xem hay tương tác trên stream của Lan nhưng tôi cũng hi vọng rằng quý cô đây sẽ gặp được nhiều thành công hơn trong tương lai.' }
         ],
         letter: {
           date: 'Hà Nội, 21/03/2026',
@@ -204,6 +217,8 @@ Tuổi mới, đừng gầy quá nữa.
 Cũng đừng ốm nhiều quá nữa.
 
 Nal yêu cậu!!!!
+
+Xin lỗi vì văn phong tớ dài dòng lủng củng, tuy thế thì đều là những điều tớ muốn bộc bạch từ tận sâu trong tim tớ gửi đến cậu, mong cậu sẽ cảm nhận được tình cảm chân thành này của tớ, cũng như toàn bộ Nal dành cho cậu.
 
 Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
           sign: 'Một Nal nào đó trên mạng'
@@ -231,6 +246,8 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     let wishSectionObserver = null;
     let preCountdownTimers = [];
     let preCountdownStarted = {};
+    let letterAnimationTimers = [];
+    let letterTransitioning = false;
     let cassetteClickAudioCtx = null;
     let lastCassetteClickAt = 0;
 
@@ -252,12 +269,15 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       's-candles',
       's-gifts',
       's-messages',
+      's-interlude-note',
       's-letter',
       's-gift-choice'
     ];
-    const INITIAL_VISIBLE_WISHES = 6;
+    const INITIAL_VISIBLE_WISHES = 10;
     const WISH_STAGGER_CLASSES = 6;
     const PRE_COUNTDOWN_LINE_DELAY_MS = 2500;
+    const INTERLUDE_AUTO_ADVANCE_MS = 2600;
+    const INTERLUDE_SECTION = 'interlude-note';
     const PRE_COUNTDOWN_LINES = [
       'Cả năm vừa qua...',
       'Chúng tớ...',
@@ -266,7 +286,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     ];
 
     const PRE_COUNTDOWN_SECTIONS = ['precountdown-1', 'precountdown-2', 'precountdown-3', 'precountdown-4'];
-    const SECTION_ORDER = ['greeting', 'typing', ...PRE_COUNTDOWN_SECTIONS, 'candles', 'gifts', 'messages', 'letter', 'gift-choice'];
+    const SECTION_ORDER = ['greeting', 'typing', ...PRE_COUNTDOWN_SECTIONS, 'candles', 'gifts', 'messages', INTERLUDE_SECTION, 'letter', 'gift-choice'];
     const FIRST_SECTION = SECTION_ORDER[0];
     const CONTINUE_BUTTON_IDS = [
       'typing-continue-btn',
@@ -392,6 +412,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
             's-candles': 'rgba(255, 217, 160, 0.34)',
             's-gifts': 'rgba(232, 131, 106, 0.28)',
             's-messages': 'rgba(255, 222, 198, 0.22)',
+            's-interlude-note': 'rgba(255, 229, 205, 0.26)',
             's-letter': 'rgba(246, 169, 209, 0.24)',
             's-gift-choice': 'rgba(255, 226, 198, 0.28)'
           }
@@ -410,6 +431,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
           's-candles': 'rgba(224, 205, 255, 0.32)',
           's-gifts': 'rgba(200, 168, 240, 0.26)',
           's-messages': 'rgba(243, 230, 255, 0.2)',
+          's-interlude-note': 'rgba(236, 224, 255, 0.24)',
           's-letter': 'rgba(200, 168, 240, 0.22)',
           's-gift-choice': 'rgba(232, 216, 255, 0.26)'
         }
@@ -801,6 +823,9 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       }
       if (PRE_COUNTDOWN_SECTIONS.includes(name) && !preCountdownStarted[name]) {
         playPrecountdownPage(name);
+      }
+      if (name === INTERLUDE_SECTION && !preCountdownStarted[name]) {
+        playInterludePage(name);
       }
       if (name === 'candles' && !candleStarted) {
         candleStarted = true;
@@ -1203,6 +1228,10 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       preCountdownTimers = clearTimeoutBucket(preCountdownTimers);
     }
 
+    function clearLetterAnimationTimers() {
+      letterAnimationTimers = clearTimeoutBucket(letterAnimationTimers);
+    }
+
     function renderPrecountdownLines() {
       PRE_COUNTDOWN_LINES.forEach((lineText, index) => {
         const lineEl = document.getElementById(`precountdown-line-${index + 1}`);
@@ -1220,6 +1249,14 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       const timerId = setTimeout(() => {
         completeSection(sectionName);
       }, PRE_COUNTDOWN_LINE_DELAY_MS);
+      preCountdownTimers.push(timerId);
+    }
+
+    function playInterludePage(sectionName) {
+      preCountdownStarted[sectionName] = true;
+      const timerId = setTimeout(() => {
+        completeSection(sectionName);
+      }, INTERLUDE_AUTO_ADVANCE_MS);
       preCountdownTimers.push(timerId);
     }
 
@@ -1247,9 +1284,15 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     });
 
     document.getElementById('messages-load-more-btn').addEventListener('click', () => {
-      appendWishBatch(activeWishEntries.length);
-      const loadMoreBtn = document.getElementById('messages-load-more-btn');
-      loadMoreBtn.hidden = renderedWishCount >= activeWishEntries.length;
+      if (renderedWishCount < activeWishEntries.length) {
+        appendWishBatch(activeWishEntries.length);
+        announceStatus('Đã mở toàn bộ lời chúc.');
+      } else {
+        collapseWishList();
+        announceStatus('Đã ẩn bớt lời chúc.');
+      }
+
+      updateLoadMoreButtonState();
     });
 
     function buildGiftSvg(gift, i) {
@@ -1941,6 +1984,27 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       observeWishCards(cards);
     }
 
+    function collapseWishList() {
+      const grid = document.getElementById('message-grid');
+      renderedWishCount = 0;
+      grid.innerHTML = '';
+      appendWishBatch(INITIAL_VISIBLE_WISHES);
+      setupWishObservers();
+    }
+
+    function updateLoadMoreButtonState() {
+      const loadMoreBtn = document.getElementById('messages-load-more-btn');
+      if (!loadMoreBtn) return;
+
+      const canToggle = activeWishEntries.length > INITIAL_VISIBLE_WISHES;
+      loadMoreBtn.hidden = !canToggle;
+      if (!canToggle) return;
+
+      const isExpanded = renderedWishCount >= activeWishEntries.length;
+      loadMoreBtn.textContent = isExpanded ? 'Ẩn bớt lời chúc' : 'Xem thêm lời chúc';
+      loadMoreBtn.setAttribute('aria-label', isExpanded ? 'Ẩn bớt lời chúc' : 'Xem thêm lời chúc');
+    }
+
     function setupWishObservers() {
       const section = document.getElementById('s-messages');
       const cards = [...document.querySelectorAll('#message-grid .fan-wishes__card')];
@@ -1981,16 +2045,18 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       messagesBuilt = true;
       const msgs = getMessageBoardEntries();
       const grid = document.getElementById('message-grid');
-      const loadMoreBtn = document.getElementById('messages-load-more-btn');
+      const messagesSection = document.getElementById('s-messages');
 
       activeWishEntries = msgs;
       renderedWishCount = 0;
 
+      if (messagesSection) {
+        messagesSection.classList.toggle('fan-wishes--dense', msgs.length >= 20);
+      }
+
       grid.innerHTML = '';
       appendWishBatch(INITIAL_VISIBLE_WISHES);
-
-      const hasMore = msgs.length > renderedWishCount;
-      loadMoreBtn.hidden = !hasMore;
+      updateLoadMoreButtonState();
 
       setupWishObservers();
     }
@@ -2015,10 +2081,20 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       const seal = document.getElementById('wax-seal');
       if (seal) seal.textContent = isLan ? '🌸' : '🦋';
 
+      clearLetterAnimationTimers();
+      letterUnrolled = false;
+      letterTransitioning = false;
       document.getElementById('letter-paper').classList.remove('open');
+      document.getElementById('letter-paper').classList.remove('second-beat');
       document.getElementById('rod-bottom').classList.remove('open');
       document.getElementById('wax-seal').classList.remove('show');
       document.querySelectorAll('.letter-line').forEach((el) => el.classList.remove('show'));
+
+      const letterToggleBtn = document.getElementById('open-letter');
+      if (letterToggleBtn) {
+        letterToggleBtn.textContent = 'Mở thư ra ↓';
+        letterToggleBtn.setAttribute('aria-label', 'Mở thư ra');
+      }
     }
 
     function playPageFlipSound() {
@@ -2069,31 +2145,73 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       } catch (_e) {}
     }
 
-    document.getElementById('open-letter').addEventListener('click', () => {
-      if (letterUnrolled) return;
+    function closeLetter() {
+      const paper = document.getElementById('letter-paper');
+      const rod = document.getElementById('rod-bottom');
+      const seal = document.getElementById('wax-seal');
+      const letterToggleBtn = document.getElementById('open-letter');
+
+      clearLetterAnimationTimers();
+      letterTransitioning = false;
+      letterUnrolled = false;
+
+      paper.classList.remove('open', 'second-beat');
+      rod.classList.remove('open');
+      seal.classList.remove('show');
+      document.querySelectorAll('.letter-line').forEach((el) => el.classList.remove('show'));
+
+      if (letterToggleBtn) {
+        letterToggleBtn.textContent = 'Mở thư ra ↓';
+        letterToggleBtn.setAttribute('aria-label', 'Mở thư ra');
+      }
+
+      announceStatus('Đã đóng thư lại.');
+    }
+
+    function openLetter() {
+      if (letterUnrolled || letterTransitioning) return;
+      letterTransitioning = true;
       playPageFlipSound();
       const paper = document.getElementById('letter-paper');
       const rod = document.getElementById('rod-bottom');
+      const letterToggleBtn = document.getElementById('open-letter');
       paper.classList.add('open');
       rod.classList.add('open');
 
       // Add one extra paper "beat" so the letter feels more alive after unfolding.
-      setTimeout(() => {
+      const beatTimer = setTimeout(() => {
         paper.classList.remove('second-beat');
         void paper.offsetWidth;
         paper.classList.add('second-beat');
       }, 900);
+      letterAnimationTimers.push(beatTimer);
 
       const lines = [...document.querySelectorAll('.letter-line')];
       const delays = [700, 1000, 1320, 1700, 1980];
       lines.forEach((line, i) => {
-        setTimeout(() => line.classList.add('show'), delays[i] || 1200);
+        const lineTimer = setTimeout(() => line.classList.add('show'), delays[i] || 1200);
+        letterAnimationTimers.push(lineTimer);
       });
-      setTimeout(() => {
+      const sealTimer = setTimeout(() => {
         document.getElementById('wax-seal').classList.add('show');
         letterUnrolled = true;
+        letterTransitioning = false;
+        if (letterToggleBtn) {
+          letterToggleBtn.textContent = 'Đóng thư lại ↑';
+          letterToggleBtn.setAttribute('aria-label', 'Đóng thư lại');
+        }
         completeSection('letter', { autoScrollNext: false });
       }, 2550);
+      letterAnimationTimers.push(sealTimer);
+    }
+
+    document.getElementById('open-letter').addEventListener('click', () => {
+      if (letterTransitioning) return;
+      if (letterUnrolled) {
+        closeLetter();
+        return;
+      }
+      openLetter();
     });
 
     function prepareCakeSection() {
