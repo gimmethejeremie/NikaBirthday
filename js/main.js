@@ -162,7 +162,7 @@ Thế nhé, sống thật tốt vào!`,
             body: 'Có câu hỏi nhỏ, trả lời đúng để mở kho báu đặc biệt.',
             boosts: ['Mystery +1', 'Curiosity +99'],
             secret: {
-              question: 'Bạn Lan đạp xe từ nhà đến trường. Trong 1 giờ đầu, Lan đi được 1800 m. Trong 2 giờ tiếp theo, mỗi giờ Lan đạp nhanh hơn giờ đầu 654 m. Hỏi vận tốc trung bình của Lan trong cả quãng đường là bao nhiêu mét mỗi giờ?',
+              question: 'Bạn Lan đạp xe từ nhà đến trường. Trong 1 giờ đầu, Lan đi được 1800 m. Trong 2 giờ tiếp theo, mỗi giờ Lan đạp nhanh hơn giờ đầu 454,5 m. Hỏi vận tốc trung bình của Lan trong cả quãng đường là bao nhiêu mét mỗi giờ?',
               answer: ['2103'],
               rewardTitle: 'Quà bí mật đã mở: Tiara of Nal',
               rewardBody: 'Legendary Skin Công Chúa Lan +1, Vocal Blessing +700, và combo một năm tràn ngập năng lượng dễ thương.',
@@ -234,9 +234,6 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     let candleStarted = false;
     let typingDone = false;
     let letterUnrolled = false;
-    let giftsBuilt = false;
-    let messagesBuilt = false;
-    let letterBuilt = false;
     let giftChoiceNoHits = 0;
     let secretUnlockedByGift = new Set();
     let giftAnimationTimers = [];
@@ -277,6 +274,10 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     const WISH_STAGGER_CLASSES = 6;
     const PRE_COUNTDOWN_LINE_DELAY_MS = 2500;
     const INTERLUDE_AUTO_ADVANCE_MS = 2600;
+    const CANDLE_COUNT = 5;
+    const GIFT_CHOICE_NO_MAX_HITS = 5;
+    const NO_BUTTON_EVADE_DISTANCE = 160;
+    const NO_BUTTON_EVADE_THROTTLE_MS = 45;
     const INTERLUDE_SECTION = 'interlude-note';
     const PRE_COUNTDOWN_LINES = [
       'Cả năm vừa qua...',
@@ -1127,9 +1128,6 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       candleStarted = false;
       typingDone = false;
       letterUnrolled = false;
-      giftsBuilt = false;
-      messagesBuilt = false;
-      letterBuilt = false;
       giftChoiceNoHits = 0;
       secretUnlockedByGift = new Set();
       activeWishEntries = [];
@@ -1313,7 +1311,6 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     }
 
     function buildGifts() {
-      giftsBuilt = true;
       const grid = document.getElementById('gift-grid');
       const progress = document.getElementById('gift-progress');
       const gifts = DATA[chosen].gifts;
@@ -1781,7 +1778,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     }
 
     function moveNoButton() {
-      if (giftChoiceNoBtn.hidden || giftChoiceNoHits >= 5) return;
+      if (giftChoiceNoBtn.hidden || giftChoiceNoHits >= GIFT_CHOICE_NO_MAX_HITS) return;
 
       const actionsRect = giftChoiceActions.getBoundingClientRect();
       const noRect = giftChoiceNoBtn.getBoundingClientRect();
@@ -1796,9 +1793,9 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     }
 
     function evadeNoOnPointerMove(event) {
-      if (giftChoiceNoBtn.hidden || giftChoiceNoHits >= 5) return;
+      if (giftChoiceNoBtn.hidden || giftChoiceNoHits >= GIFT_CHOICE_NO_MAX_HITS) return;
       const now = performance.now();
-      if (now - lastNoMoveAt < 45) return;
+      if (now - lastNoMoveAt < NO_BUTTON_EVADE_THROTTLE_MS) return;
 
       const noRect = giftChoiceNoBtn.getBoundingClientRect();
       const cx = noRect.left + noRect.width / 2;
@@ -1807,7 +1804,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       const dy = event.clientY - cy;
       const distance = Math.hypot(dx, dy);
 
-      if (distance < 160) {
+      if (distance < NO_BUTTON_EVADE_DISTANCE) {
         lastNoMoveAt = now;
         moveNoButton();
       }
@@ -1825,7 +1822,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       event.preventDefault();
       giftChoiceNoHits += 1;
 
-      if (giftChoiceNoHits >= 5) {
+      if (giftChoiceNoHits >= GIFT_CHOICE_NO_MAX_HITS) {
         giftChoiceNoBtn.hidden = true;
         giftChoiceNoBtn.style.display = 'none';
         giftChoiceNoBtn.classList.remove('is-escaping');
@@ -2042,7 +2039,6 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     }
 
     function buildMessages() {
-      messagesBuilt = true;
       const msgs = getMessageBoardEntries();
       const grid = document.getElementById('message-grid');
       const messagesSection = document.getElementById('s-messages');
@@ -2062,7 +2058,6 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     }
 
     function buildLetter() {
-      letterBuilt = true;
       const isLan = chosen === 'lan-linh';
       const letterSection = document.getElementById('s-letter');
       if (letterSection) {
@@ -2291,7 +2286,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     }
 
     function startCountdown() {
-      let n = 5;
+      let n = CANDLE_COUNT;
       const el = document.getElementById('countdown-value');
       const candleTitle = document.getElementById('candle-title');
       el.textContent = String(n);
@@ -2332,7 +2327,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       const candleTitle = document.getElementById('candle-title');
       const countdownValue = document.getElementById('countdown-value');
       const candleWishes = DATA[chosen].candleWishes || [];
-      const nextWish = candleWishes[blown.size - 1] || `Đã thổi nến ${blown.size}/5 ✨`;
+      const nextWish = candleWishes[blown.size - 1] || `Đã thổi nến ${blown.size}/${CANDLE_COUNT} ✨`;
       document.querySelectorAll(`.candle-flame[data-candle="${id}"]`).forEach((f) => {
         f.classList.add('candle-off');
       });
@@ -2352,7 +2347,7 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
       toast.removeAttribute('data-burst-text');
       toast.classList.add('show');
 
-      if (blown.size === 5) {
+      if (blown.size === CANDLE_COUNT) {
         if (countdownValue) {
           countdownValue.textContent = '';
         }
@@ -2496,8 +2491,6 @@ Và cậu báo, cậu báo lắm Lan ạ. Thế nhé! Sống cho tốt vào!`,
     createParticles(document.getElementById('particles-s8'), 'rgba(245,236,213,0.56)', 24);
     initStaticImageFallbacks();
     initButtonRipples();
-
-    syncMuteIcons();
     initCursorEffect();
     showScreen(s0);
 
